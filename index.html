@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TypeSwift</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <!-- Difficulty Selection Screen -->
+        <div id="difficulty-container">
+            <h1 class="card-title">TypeSwift</h1>
+            <div class="difficulty-buttons">
+                <button class="difficulty-button" data-difficulty="beginner">
+                    <span class="difficulty-title">Beginner</span>
+                    <span class="difficulty-desc">Simple, common words</span>
+                </button>
+                <button class="difficulty-button" data-difficulty="advanced">
+                    <span class="difficulty-title">Advanced</span>
+                    <span class="difficulty-desc">Complex, challenging words</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Game Container (initially hidden) -->
+        <div id="game-container" style="display: none">
+            <!-- Rest of the game HTML remains the same -->
+            <h1 class="card-title">TypeSwift</h1>
+            <div class="difficulty-indicator"></div>
+
+            <div class="mode-selector">
+                <button class="mode-button active" data-mode="time">Time Mode</button>
+                <button class="mode-button" data-mode="words">Word Count Mode</button>
+            </div>
+
+            <div class="game-header">
+                <div class="time-options">
+                    <button class="time-button" data-value="15">15s</button>
+                    <button class="time-button active" data-value="30">30s</button>
+                    <button class="time-button" data-value="45">45s</button>
+                    <button class="time-button" data-value="60">60s</button>
+                </div>
+                <br>
+                <div class="progress-display">Time: 30s</div>
+            </div>
+
+            <div class="word-display"></div>
+            <input type="text" class="input-field" placeholder="Start typing to begin..." autofocus>
+            <p class="info-text">Press TAB to restart | Press ESC to change difficulty</p>
+        </div>
+
+        <!-- Results Container (initially hidden) -->
+        <div id="results-container" style="display: none">
+            <!-- Results HTML remains the same -->
+            <div class="results-page">
+                <h2 class="results-title">Test Complete!</h2>
+                <br>
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-value accuracy-value">0%</div>
+                        <div>Accuracy</div>
+                    </div>
+                    <br>
+                    <div class="stat-card">
+                        <div class="stat-value words-count-value">0 / 0</div>
+                        <div>Correct / Total Words</div>
+                    </div>
+                    <br>
+                    <div class="wpm-breakdown">
+                        <div class="wpm-detail">
+                            <div class="wpm-label">Raw WPM (All Words)</div>
+                            <div class="wpm-value-small raw-wpm-value">0</div>
+                        </div>
+                        <div class="wpm-detail">
+                            <div class="wpm-label">Net WPM (Correct Words)</div>
+                            <div class="wpm-value-small net-wpm-value">0</div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="button-container">
+                    <button class="restart-button">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="typing-test.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
