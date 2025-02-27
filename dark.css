@@ -2,8 +2,8 @@
   --primary: #b76eff;
   --primary-glow: #783db450;
   --primary-hover: #8a2be2;
-  --background: #13001e;
-  --card-bg: rgba(0, 0, 0, 0.626);
+  --background: #12001c;
+  --card-bg: #08000c;
   --text: #ffffff;
   --text-secondary: #b0a8c2;
   --success: #64ffda;
@@ -118,6 +118,7 @@ body::before {
   box-shadow: 0 0 10px rgba(183, 110, 255, 0.1);
   animation: button-appear 0.5s ease-out;
   animation-fill-mode: both;
+  animation-delay: .8s;
 }
 
 #switch-button::before {

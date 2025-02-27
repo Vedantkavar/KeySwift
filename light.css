@@ -1,6 +1,6 @@
 :root {
   --primary: #00f7ff;
-  --primary-glow: #00f7ff50;
+  --primary-glow: #07727650;
   --primary-hover: #0076ff;
   --background: #0a0e17;
   --card-bg: rgba(16, 23, 41, 0.8);
@@ -102,6 +102,7 @@ body::before {
   border: 2px solid var(--border);
   border-radius: 1.25rem;
   padding: 1.75rem;
+  color: #02b8be;
   cursor: pointer;
 
   display: block;
@@ -118,6 +119,7 @@ body::before {
   box-shadow: 0 0 10px rgba(11, 90, 93, 0.1);
   animation: button-appear 0.5s ease-out;
   animation-fill-mode: both;
+  animation-delay: .8s;
 }
 
 #switch-button::before {
@@ -157,6 +159,7 @@ body::before {
   border: 2px solid var(--border);
   border-radius: 1.25rem;
   padding: 1.75rem;
+  color: #02b8be;
   cursor: pointer;
   width: 30rem;
   transition: all 0.3s ease;

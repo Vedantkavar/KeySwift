@@ -177,7 +177,7 @@ class TypingTest {
 
   displayWords() {
     const currentWord = this.words[this.currentWordIndex];
-    const wordsToShow = this.words.slice(this.currentWordIndex, this.currentWordIndex + 10);
+    const wordsToShow = this.words.slice(this.currentWordIndex, this.currentWordIndex + 8);
     
     const wordElements = wordsToShow.map((word, wordIndex) => {
       if (wordIndex === 0) {
