@@ -2,6 +2,7 @@ class TypingTest {
   constructor(difficulty = 'beginner') {
     this.difficulty = difficulty;
     this.wordList = difficulty === 'beginner' ? BEGINNER_WORD_LIST : ADVANCED_WORD_LIST;
+    this.wordList = difficulty === 'medium' ? MEDIUM_WORD_LIST : this.wordList;
     this.words = [];
     this.currentWordIndex = 0;
     this.isRunning = false;

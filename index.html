@@ -5,16 +5,21 @@
     <title>TypeSwift</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <div class="card">
-        <!-- Difficulty Selection Screen -->
+         
         <div id="difficulty-container">
             <h1 class="card-title">TypeSwift</h1>
             <div class="difficulty-buttons">
                 <button class="difficulty-button" data-difficulty="beginner">
                     <span class="difficulty-title">Beginner</span>
                     <span class="difficulty-desc">Simple, common words</span>
+                </button>
+                <button class="difficulty-button" data-difficulty="medium">
+                    <span class="difficulty-title">Medium</span>
+                    <span class="difficulty-desc">Modrate, balanced words</span>
                 </button>
                 <button class="difficulty-button" data-difficulty="advanced">
                     <span class="difficulty-title">Advanced</span>
@@ -23,9 +28,7 @@
             </div>
         </div>
 
-        <!-- Game Container (initially hidden) -->
         <div id="game-container" style="display: none">
-            <!-- Rest of the game HTML remains the same -->
             <h1 class="card-title">TypeSwift</h1>
             <div class="difficulty-indicator"></div>
 
@@ -42,21 +45,36 @@
                     <button class="time-button" data-value="60">60s</button>
                 </div>
                 <br>
-                <div class="progress-display">Time: 30s</div>
+                <div class="progress-display"><h1>Time: 30s</h1></div>
             </div>
 
             <div class="word-display"></div>
             <input type="text" class="input-field" placeholder="Start typing to begin..." autofocus>
-            <p class="info-text">Press TAB to restart | Press ESC to change difficulty</p>
+            <p class="info-text">Press TAB to restart</p>
+            <p class="info-text">Press ESC to change difficulty</p>
+            <p class="info-text">Press SPACE to subbmit</p>
         </div>
 
-        <!-- Results Container (initially hidden) -->
         <div id="results-container" style="display: none">
-            <!-- Results HTML remains the same -->
+
             <div class="results-page">
                 <h2 class="results-title">Test Complete!</h2>
                 <br>
                 <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="wpm-detail">
+                            <div class="stat-value wpm-value-small net-wpm-value">0</div>
+                            <div class="wpm-label">Net WPM (Correct Words)</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="stat-card">
+                        <div class="wpm-detail">
+                            <div class="stat-value wpm-value-small raw-wpm-value">0</div>
+                            <div class="wpm-label">Raw WPM (All Words)</div>
+                        </div>
+                    </div>
+                    <br>
                     <div class="stat-card">
                         <div class="stat-value accuracy-value">0%</div>
                         <div>Accuracy</div>
@@ -65,17 +83,6 @@
                     <div class="stat-card">
                         <div class="stat-value words-count-value">0 / 0</div>
                         <div>Correct / Total Words</div>
-                    </div>
-                    <br>
-                    <div class="wpm-breakdown">
-                        <div class="wpm-detail">
-                            <div class="wpm-label">Raw WPM (All Words)</div>
-                            <div class="wpm-value-small raw-wpm-value">0</div>
-                        </div>
-                        <div class="wpm-detail">
-                            <div class="wpm-label">Net WPM (Correct Words)</div>
-                            <div class="wpm-value-small net-wpm-value">0</div>
-                        </div>
                     </div>
                     <br>
                 </div>
