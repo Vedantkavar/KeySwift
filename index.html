@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>TypeSwift</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="dark.css" id="theme-css">
 </head>
 <body>
     <div class="card">
@@ -25,6 +24,7 @@
                     <span class="difficulty-title">Advanced</span>
                     <span class="difficulty-desc">Complex, challenging words</span>
                 </button>
+                <button  id="switch-button">Dark Theme</button>
             </div>
         </div>
 
@@ -93,6 +93,19 @@
         </div>
     </div>
 
+    <script>
+        const switchButton = document.getElementById('switch-button');
+        const styleSheet = document.getElementById('theme-css');
+        switchButton.addEventListener('click', function() {
+            if(styleSheet.getAttribute('href') === 'dark.css') {
+                styleSheet.setAttribute('href', 'light.css');
+                switchButton.textContent = 'Light Theme';
+            } else {
+                styleSheet.setAttribute('href', 'dark.css');
+                switchButton.textContent = 'Dark Theme';
+            }
+        });
+    </script>
     <script src="words.js"></script>
     <script src="typing-test.js"></script>
     <script src="app.js"></script>
