@@ -131,18 +131,11 @@ class TypingTest {
         this.setTimeMode30s();
         this.showDifficultySelection();
       } else if (e.key === 'Backspace' && this.currentInput.length === 0 && this.currentWordIndex > 0) {
-        // CHANGE 2: Allow backspace to previous word
+        // Allow backspace to previous word
         e.preventDefault();
         this.handleBackspace();
-      } else {
-        // Prevent typing more characters than the current word length
-        const currentWord = this.words[this.currentWordIndex];
-        if (this.currentInput.length >= currentWord.length && 
-            !['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
-          e.preventDefault();
-          this.handleSpaceKey(); // Automatically move to next word
-        }
       }
+      // Remove the auto-move logic for when typing more characters than the word length
     });
 
     document.addEventListener('keydown', (e) => {
@@ -184,7 +177,6 @@ class TypingTest {
     }
   }
 
-  // CHANGE 2: New method to handle backspace to previous word
   handleBackspace() {
     // Move back to the previous word
     this.currentWordIndex--;
@@ -214,22 +206,16 @@ class TypingTest {
   handleInput(inputValue) {
     const currentWord = this.words[this.currentWordIndex];
     
-    // Limit input to current word length
-    if (inputValue.length > currentWord.length) {
-      inputValue = inputValue.substring(0, currentWord.length);
-      this.inputField.value = inputValue;
-    }
-    
+    // No longer limiting input length - allow typing beyond word length
     this.currentInput = inputValue;
     this.cursorPosition = inputValue.length;
     
-    // CHANGE 1: Track incorrect characters
+    // Track incorrect characters
     this.updateIncorrectCharCount();
     
     this.displayWords();
   }
 
-  // CHANGE 1: New method to count incorrect characters
   updateIncorrectCharCount() {
     const currentWord = this.words[this.currentWordIndex];
     let incorrectCount = 0;
@@ -243,17 +229,13 @@ class TypingTest {
     this.incorrectChars = incorrectCount;
   }
 
-  // Method to handle space key
-  // Method to handle space key
-handleSpaceKey() {
-  const currentWord = this.words[this.currentWordIndex];
-  
-  // Only proceed to next word if the input length matches the current word length
-  // This prevents skipping words with space if they're not complete
-  if (this.currentInput.length === currentWord.length) {
-    // CHANGE 1: Check if the word has any incorrect characters
-    const hasIncorrectChars = this.incorrectChars > 0;
+  // Modified method to handle space key - only space key will move to next word
+  handleSpaceKey() {
+    const currentWord = this.words[this.currentWordIndex];
     
+    // CHANGE: Removed condition checking input length matches word length
+    // Now we always proceed to next word when space is pressed
+
     // Check if the word is correct (exact match)
     const isCorrect = this.currentInput === currentWord;
     
@@ -297,7 +279,6 @@ handleSpaceKey() {
       this.updateProgressDisplay();
     }
   }
-}
 
   // Method to generate more words when reaching near the end
   generateMoreWords() {
@@ -320,7 +301,7 @@ handleSpaceKey() {
       const isCurrentWord = realIndex === this.currentWordIndex;
       
       if (realIndex < this.currentWordIndex) {
-        // Words already typed - CHANGE 1: Show character-by-character highlight for errors
+        // Words already typed - Show character-by-character highlight for errors
         const typedWord = this.typedWords[realIndex];
         
         if (typedWord) {
@@ -384,6 +365,19 @@ handleSpaceKey() {
             wordDisplayHTML += '<span class="cursor-line"></span>';
           }
           
+          // CHANGE: Show extra characters typed beyond word length
+          for (let i = word.length; i < this.currentInput.length; i++) {
+            if (i === this.cursorPosition) {
+              wordDisplayHTML += '<span class="cursor-line"></span>';
+            }
+            wordDisplayHTML += `<span class="extra-char">${this.currentInput[i]}</span>`;
+          }
+          
+          // Show cursor at the very end if needed
+          if (this.cursorPosition === this.currentInput.length && this.currentInput.length > word.length) {
+            wordDisplayHTML += '<span class="cursor-line"></span>';
+          }
+          
           wordDisplayHTML += '</span> ';
         }
       } else {
@@ -430,7 +424,7 @@ handleSpaceKey() {
           white-space: nowrap;
         }
         
-        /* CHANGE 1: Character-specific styling for typed words */
+        /* Character-specific styling for typed words */
         .typed-correct-char {
           color: #64ffda;
         }
@@ -449,6 +443,12 @@ handleSpaceKey() {
         }
         
         .incorrect {
+          color: #f44336;
+          text-decoration: underline;
+        }
+        
+        /* CHANGE: Style for extra characters typed beyond word length */
+        .extra-char {
           color: #f44336;
           text-decoration: underline;
         }
