@@ -113,6 +113,8 @@ class TypingTest {
         if (this.isRunning) {
           this.stopGame();
         }
+        // Set game mode to time and time to 30s
+        this.setTimeMode30s();
         this.showDifficultySelection();
       }
     });
@@ -133,6 +135,8 @@ class TypingTest {
         if (this.isRunning) {
           this.stopGame();
         }
+        // Set game mode to time and time to 30s
+        this.setTimeMode30s();
         this.showDifficultySelection();
       }
     });
@@ -154,6 +158,31 @@ class TypingTest {
     }
   }
 
+  // New method to set game mode to time and time to 30s
+  setTimeMode30s() {
+    this.gameMode = 'time';
+    this.targetValue = 30;
+    this.timeLeft = 30;
+    
+    // Update UI to reflect changes
+    this.modeButtons.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.dataset.mode === 'time') {
+        btn.classList.add('active');
+      }
+    });
+    
+    this.timeButtons.forEach(btn => {
+      btn.classList.remove('active');
+      const value = btn.dataset.value;
+      btn.textContent = `${value}s`;
+      if (parseInt(value) === 30) {
+        btn.classList.add('active');
+      }
+    });
+    
+    this.updateProgressDisplay();
+  }
 
   handleWordSubmission() {
     const currentWord = this.words[this.currentWordIndex];
@@ -266,5 +295,10 @@ class TypingTest {
     this.gameContainer.style.display = 'none';
     this.resultsContainer.style.display = 'none';
     this.difficultyContainer.style.display = 'block';
+  }
+
+  stopGame() {
+    clearInterval(this.timer);
+    this.isRunning = false;
   }
 }

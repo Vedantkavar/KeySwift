@@ -465,6 +465,8 @@ body::before {
 .stat-card {
   background: rgba(16, 23, 41, 0.7);
   padding: 1.25rem;
+  max-height: 150px;
+  min-height: 150px;
   border-radius: 1.25rem;
   transition: all 0.3s ease;
   border: 1px solid var(--border);
