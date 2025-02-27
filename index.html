@@ -24,7 +24,7 @@
                     <span class="difficulty-title">Advanced</span>
                     <span class="difficulty-desc">Complex, challenging words</span>
                 </button>
-                <button  id="switch-button">Dark Theme</button>
+                <button  id="switch-button">Light Theme</button>
             </div>
         </div>
 
@@ -94,10 +94,10 @@
         switchButton.addEventListener('click', function() {
             if(styleSheet.getAttribute('href') === 'dark.css') {
                 styleSheet.setAttribute('href', 'light.css');
-                switchButton.textContent = 'Light Theme';
+                switchButton.textContent = 'Dark Theme';
             } else {
                 styleSheet.setAttribute('href', 'dark.css');
-                switchButton.textContent = 'Dark Theme';
+                switchButton.textContent = 'Light Theme';
             }
         });
     </script>
