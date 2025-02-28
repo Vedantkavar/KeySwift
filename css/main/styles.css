@@ -1,0 +1,179 @@
+.theme-switch-container {
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  z-index: 100;
+  font-family: 'Poppins', sans-serif;
+}
+
+.theme-button {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(40, 40, 80, 0.8), rgba(20, 20, 40, 0.9));
+  color: rgba(200, 220, 255, 0.95);
+  border: 1px solid rgba(100, 130, 255, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #3f87f5, #6354e4, #3f87f5);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0.3;
+  animation: borderGlow 4s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
+.theme-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(50, 100, 255, 0.25), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  color: rgba(220, 240, 255, 1);
+}
+
+.theme-button:active {
+  transform: translateY(1px);
+}
+
+.theme-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: rgba(25, 25, 40, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3), 
+              0 0 0 1px rgba(100, 130, 255, 0.2),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  margin-top: 5px;
+  width: 150px;
+  padding: 6px;
+  overflow: hidden;
+  transform-origin: top center;
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1), 
+              opacity 0.2s ease;
+  transform: translateY(-10px) scale(0.95);
+  opacity: 0;
+}
+
+.theme-dropdown.show {
+  display: block;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.theme-option {
+  padding: 10px 14px;
+  margin: 4px 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: rgba(200, 230, 255, 0.9);
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Modified theme option styles for better active state visualization */
+.theme-option::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(to bottom, rgba(100, 160, 255, 0), rgba(100, 160, 255, 0.7), rgba(100, 160, 255, 0));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Checkmark for selected theme */
+.theme-option.selected::after {
+  content: '✓';
+  position: absolute;
+  right: 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4dabf7;
+  opacity: 1;
+}
+
+/* Theme preview circles - base styles */
+.theme-preview {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 10px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+
+/* Selected state - enhanced preview */
+.theme-option.selected .theme-preview {
+  width: 18px;
+  height: 18px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3), 
+              0 0 5px rgba(100, 180, 255, 0.5);
+  border-width: 2px;
+}
+
+/* Hover and active states */
+.theme-option:hover {
+  background: rgba(70, 90, 150, 0.2);
+  color: rgba(220, 240, 255, 1);
+}
+
+.theme-option:hover::before {
+  opacity: 1;
+}
+
+.theme-option:hover .theme-preview {
+  transform: scale(1.1);
+}
+
+.theme-option:active {
+  background: rgba(80, 100, 180, 0.3);
+  transform: scale(0.98);
+}
+
+/* Selected state */
+.theme-option.selected {
+  background: rgba(70, 100, 180, 0.25);
+  color: #ffffff;
+  font-weight: 500;
+  box-shadow: 0 0 0 1px rgba(100, 160, 255, 0.3);
+}
+
+/* Selected state hover */
+.theme-option.selected:hover {
+  background: rgba(70, 100, 180, 0.35);
+}

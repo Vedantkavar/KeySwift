@@ -399,8 +399,8 @@ class TypingTest {
         .cursor-line {
           display: inline-block;
           width: 2px;
-          height: 1.2em;
-          background-color: #64ffda;
+          height: 1.4em;
+          background-color:rgb(216, 187, 0);
           margin-right: -2px;
           vertical-align: middle;
           position: relative;
@@ -426,7 +426,7 @@ class TypingTest {
         
         /* Character-specific styling for typed words */
         .typed-correct-char {
-          color: #64ffda;
+          color:rgb(20, 181, 60);
         }
         
         .typed-incorrect-char {

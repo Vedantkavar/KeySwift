@@ -1,17 +1,18 @@
 :root {
-  --primary: #b76eff;
-  --primary-glow: #783db450;
-  --primary-hover: #8a2be2;
-  --background: #12001c;
-  --card-bg: #08000c;
+  --primary: #00f7ff;
+  --primary-glow: #07727650;
+  --primary-hover: #0076ff;
+  --background: #0a0e17;
+  --card-bg: rgba(16, 23, 41, 0.8);
   --text: #ffffff;
-  --text-secondary: #b0a8c2;
-  --success: #64ffda;
+  --text-secondary: #8892b0;
+  --success: #00ff9d;
   --error: #ff3366;
-  --border: rgba(183, 110, 255, 0.2);
+  --border: rgba(0, 247, 255, 0.2);
   --glow-radius: 5px;
   --neon-shadow: 0 0 5px var(--primary), 0 0 15px var(--primary-glow);
 }
+
 
 * {
   box-sizing: border-box;
@@ -27,9 +28,9 @@ body {
   justify-content: center;
   background-color: var(--background);
   background-image: 
-    radial-gradient(at 40% 20%, rgba(183, 110, 255, 0.15) 0px, transparent 50%),
-    radial-gradient(at 80% 0%, rgba(138, 43, 226, 0.1) 0px, transparent 50%),
-    radial-gradient(at 0% 50%, rgba(183, 110, 255, 0.1) 0px, transparent 50%);
+    radial-gradient(at 40% 20%, rgba(0, 247, 255, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(0, 118, 255, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(0, 247, 255, 0.1) 0px, transparent 50%);
   padding: 2rem;
   color: var(--text);
   line-height: 1.6;
@@ -45,10 +46,10 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(0deg, transparent 24%, rgba(183, 110, 255, 0.05) 25%, rgba(183, 110, 255, 0.05) 26%, transparent 27%, transparent 74%, 
-    rgba(183, 110, 255, 0.05) 75%, rgba(183, 110, 255, 0.05) 76%, transparent 77%, transparent),
-    linear-gradient(90deg, transparent 24%, rgba(183, 110, 255, 0.05) 25%, rgba(183, 110, 255, 0.05) 26%, transparent 27%, transparent 74%, 
-    rgba(183, 110, 255, 0.05) 75%, rgba(183, 110, 255, 0.05) 76%, transparent 77%, transparent);
+    linear-gradient(0deg, transparent 24%, rgba(0, 247, 255, 0.05) 25%, rgba(0, 247, 255, 0.05) 26%, transparent 27%, transparent 74%, 
+    rgba(0, 247, 255, 0.05) 75%, rgba(0, 247, 255, 0.05) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(0, 247, 255, 0.05) 25%, rgba(0, 247, 255, 0.05) 26%, transparent 27%, transparent 74%, 
+    rgba(0, 247, 255, 0.05) 75%, rgba(0, 247, 255, 0.05) 76%, transparent 77%, transparent);
   background-size: 50px 50px;
   z-index: -1;
   animation: grid-move 20s linear infinite;
@@ -62,7 +63,7 @@ body::before {
 .card {
   background: var(--card-bg);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(183, 110, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 247, 255, 0.1);
   width: 100%;
   max-width: 60rem;
   padding: 2.5rem;
@@ -86,7 +87,7 @@ body::before {
   right: -5px;
   bottom: -5px;
   border-radius: 1.7rem;
-  background: linear-gradient(135deg, transparent 20%, rgba(183, 110, 255, 0.1), transparent 80%);
+  background: linear-gradient(135deg, transparent 20%, rgba(0, 247, 255, 0.1), transparent 80%);
   z-index: -1;
   animation: border-glow 8s linear infinite;
 }
@@ -94,54 +95,6 @@ body::before {
 @keyframes border-glow {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-#switch-button {
-  background-color: rgba(40, 20, 65, 0.7);
-  border: 2px solid var(--border);
-  border-radius: 1.25rem;
-  padding: 1.75rem;
-  color: #7f39c1;
-  cursor: pointer;
-  width: 30rem;
-  transition: all 0.3s ease;
-  text-align: left;
-  
-  display: block;
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 5px var(--primary-glow);
-
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(183, 110, 255, 0.1);
-  animation: button-appear 0.5s ease-out;
-  animation-fill-mode: both;
-  animation-delay: .8s;
-}
-
-#switch-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(183, 110, 255, 0.2), transparent);
-  transition: all 0.6s ease;
-}
-
-#switch-button:hover {
-  background-color: rgba(183, 110, 255, 0.1);
-  color: white;
-  border-color: var(--primary);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--neon-shadow);
-}
-
-#switch-button:hover::before {
-  left: 100%;
 }
 
 .difficulty-buttons {
@@ -154,18 +107,18 @@ body::before {
 }
 
 .difficulty-button {
-  background-color: rgba(40, 20, 65, 0.7);
+  background-color: rgba(34, 46, 75, 0.7);
   border: 2px solid var(--border);
   border-radius: 1.25rem;
   padding: 1.75rem;
-  color: #7f39c1;
+  color: #02b8be;
   cursor: pointer;
   width: 30rem;
   transition: all 0.3s ease;
   text-align: left;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(183, 110, 255, 0.1);
+  box-shadow: 0 0 10px rgba(11, 90, 93, 0.1);
   animation: button-appear 0.5s ease-out;
   animation-fill-mode: both;
 }
@@ -186,12 +139,12 @@ body::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(183, 110, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.2), transparent);
   transition: all 0.6s ease;
 }
 
 .difficulty-button:hover {
-  background-color: rgba(183, 110, 255, 0.1);
+  background-color: rgba(0, 247, 255, 0.1);
   color: white;
   border-color: var(--primary);
   transform: translateY(-2px) scale(1.02);
@@ -280,7 +233,7 @@ body::before {
 }
 
 .mode-button, .time-button {
-  background-color: rgba(40, 20, 65, 0.7);
+  background-color: rgba(16, 23, 41, 0.7);
   color: var(--text);
   border: 2px solid var(--border);
   padding: 0.75rem 1.75rem;
@@ -300,14 +253,14 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(60deg, transparent, rgba(183, 110, 255, 0.1), transparent);
+  background: linear-gradient(60deg, transparent, rgba(0, 247, 255, 0.1), transparent);
   transform: rotate(45deg);
   transition: all 0.3s ease;
   z-index: -1;
 }
 
 .mode-button:hover, .time-button:hover {
-  background-color: rgba(183, 110, 255, 0.1);
+  background-color: rgba(0, 247, 255, 0.1);
   color: white;
   border-color: var(--primary);
   transform: translateY(-2px) scale(1.05);
@@ -319,7 +272,7 @@ body::before {
 }
 
 .mode-button.active, .time-button.active {
-  background-color: rgba(183, 110, 255, 0.15);
+  background-color: rgba(0, 247, 255, 0.15);
   color: white;
   border-color: var(--primary);
   box-shadow: var(--neon-shadow);
@@ -341,7 +294,7 @@ body::before {
 }
 
 .word-display {
-  background-color: rgba(30, 15, 50, 0.7);
+  background-color: rgba(16, 23, 41, 0.7);
   padding: 2rem;
   border-radius: 1.25rem;
   min-height: 9rem;
@@ -350,7 +303,7 @@ body::before {
   font-size: 1.35rem;
   line-height: 1.8;
   border: 2px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(183, 110, 255, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 247, 255, 0.1);
   position: relative;
   overflow: hidden;
   animation: fade-in 1.4s ease-out;
@@ -364,22 +317,22 @@ body::before {
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, 
-    rgba(183, 110, 255, 0.03) 0%, 
+    rgba(0, 247, 255, 0.03) 0%, 
     transparent 5%, 
     transparent 95%, 
-    rgba(183, 110, 255, 0.03) 100%);
+    rgba(0, 247, 255, 0.03) 100%);
   pointer-events: none;
 }
 
 .word-display span.correct {
   color: var(--success);
-  text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+  text-shadow: 0 0 8px rgba(0, 255, 157, 0.5);
   animation: correct-flash 0.3s ease-out;
 }
 
 @keyframes correct-flash {
-  0% { text-shadow: 0 0 15px rgba(100, 255, 218, 0.9); }
-  100% { text-shadow: 0 0 8px rgba(100, 255, 218, 0.5); }
+  0% { text-shadow: 0 0 15px rgba(0, 255, 157, 0.9); }
+  100% { text-shadow: 0 0 8px rgba(0, 255, 157, 0.5); }
 }
 
 .word-display span.incorrect {
@@ -401,24 +354,24 @@ body::before {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
-  background-color: rgba(30, 15, 50, 0.7);
+  background-color: rgba(16, 23, 41, 0.7);
   color: var(--text);
   font-family: 'Fira Code', monospace;
-  box-shadow: inset 0 2px 4px rgba(183, 110, 255, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 247, 255, 0.1);
   animation: fade-in 1.6s ease-out;
 }
 
 .input-field:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(183, 110, 255, 0.2), inset 0 2px 4px rgba(183, 110, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 247, 255, 0.2), inset 0 2px 4px rgba(0, 247, 255, 0.1);
   animation: input-pulse 1.5s infinite;
 }
 
 @keyframes input-pulse {
-  0% { box-shadow: 0 0 0 3px rgba(183, 110, 255, 0.1), inset 0 2px 4px rgba(183, 110, 255, 0.1); }
-  50% { box-shadow: 0 0 0 3px rgba(183, 110, 255, 0.3), inset 0 2px 4px rgba(183, 110, 255, 0.2); }
-  100% { box-shadow: 0 0 0 3px rgba(183, 110, 255, 0.1), inset 0 2px 4px rgba(183, 110, 255, 0.1); }
+  0% { box-shadow: 0 0 0 3px rgba(0, 247, 255, 0.1), inset 0 2px 4px rgba(0, 247, 255, 0.1); }
+  50% { box-shadow: 0 0 0 3px rgba(0, 247, 255, 0.3), inset 0 2px 4px rgba(0, 247, 255, 0.2); }
+  100% { box-shadow: 0 0 0 3px rgba(0, 247, 255, 0.1), inset 0 2px 4px rgba(0, 247, 255, 0.1); }
 }
 
 .info-text {
@@ -455,14 +408,14 @@ body::before {
 }
 
 .stat-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .stat-card {
-  background: rgba(40, 20, 65, 0.7);
+  background: rgba(16, 23, 41, 0.7);
   padding: 1.25rem;
   max-height: 150px;
   min-height: 150px;
@@ -519,7 +472,7 @@ body::before {
 }
 
 .restart-button {
-  background-color: rgba(183, 110, 255, 0.15);
+  background-color: rgba(0, 247, 255, 0.15);
   color: white;
   border: 2px solid var(--primary);
   padding: 1rem 2.5rem;
@@ -547,12 +500,12 @@ body::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(183, 110, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.3), transparent);
   transition: all 0.6s ease;
 }
 
 .restart-button:hover {
-  background-color: rgba(138, 43, 226, 0.2);
+  background-color: rgba(0, 118, 255, 0.2);
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary-glow);
 }
