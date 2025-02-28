@@ -35,7 +35,7 @@ themeToggle.addEventListener('click', function() {
 themeOptions.forEach(option => {
     option.addEventListener('click', function() {
         const selectedTheme = this.getAttribute('data-theme');
-        styleSheet.setAttribute('href', '/css/theme/'+ selectedTheme + '.css');
+        styleSheet.setAttribute('href', selectedTheme + '.css');
         
         // Update selection indicators
         themeOptions.forEach(opt => opt.classList.remove('selected'));
