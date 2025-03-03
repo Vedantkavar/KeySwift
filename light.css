@@ -31,7 +31,7 @@ body {
     radial-gradient(at 40% 20%, rgba(0, 247, 255, 0.15) 0px, transparent 50%),
     radial-gradient(at 80% 0%, rgba(0, 118, 255, 0.1) 0px, transparent 50%),
     radial-gradient(at 0% 50%, rgba(0, 247, 255, 0.1) 0px, transparent 50%);
-  padding: 2rem;
+  padding: 0.5rem;
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;

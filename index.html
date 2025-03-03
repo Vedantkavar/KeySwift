@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <title>TypeSwift</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dark.css" id="theme-css">
+    <link rel="stylesheet" href="oldmoney.css" id="theme-css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
     <div class="theme-switch-container">
-        <button class="theme-button" id="theme-toggle">
-            <span id="theme-text">Theme</span>
-        </button>
+        <button id="theme-toggle" class="theme-button" data-current-theme="OldMoney">THEME</button>
         <div class="theme-dropdown" id="theme-dropdown">
+            <div class="theme-option" data-theme="oldmoney">
+                <span class="theme-preview"></span>
+                <span class="option-text">OldMoney</span>
+            </div>
             <div class="theme-option" data-theme="dark">
                 <span class="theme-preview"></span>
                 <span class="option-text">Purple</span>
@@ -20,10 +23,6 @@
             <div class="theme-option" data-theme="light">
                 <span class="theme-preview"></span>
                 <span class="option-text">Light Blue</span>
-            </div>
-            <div class="theme-option" data-theme="oldmoney">
-                <span class="theme-preview"></span>
-                <span class="option-text">OldMoney</span>
             </div>
         </div>
     </div>
@@ -48,7 +47,7 @@
         </div>
 
         <div id="game-container" style="display: none">
-            <h1 class="card-title">TypeSwift</h1>
+            <!-- <h1 class="card-title">TypeSwift</h1> -->
             <div class="difficulty-indicator"></div>
 
             <div class="mode-selector">
@@ -63,7 +62,6 @@
                     <button class="time-button" data-value="45">45s</button>
                     <button class="time-button" data-value="60">60s</button>
                 </div>
-                <br>
                 <div class="progress-display"><h1>Time: 30s</h1></div>
             </div>
 

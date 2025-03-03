@@ -7,56 +7,55 @@
 }
 
 .theme-button {
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 6px 12px;
-  cursor: pointer;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(40, 40, 80, 0.8), rgba(20, 20, 40, 0.9));
-  color: rgba(200, 220, 255, 0.95);
-  border: 1px solid rgba(100, 130, 255, 0.3);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
+}
+
+/* Add this to your CSS */
+.theme-button::before {
+  position: absolute;
+  content: attr(data-current-theme, "THEME"); /* This will use the data-current-theme attribute as content */
+  color: #ffd277;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.theme-button::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #3f87f5, #6354e4, #3f87f5);
-  border-radius: 22px;
-  z-index: -1;
-  opacity: 0.3;
-  animation: borderGlow 4s linear infinite;
-}
-
-@keyframes borderGlow {
-  0% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-  100% { opacity: 0.3; }
+  width: 97%;
+  height: 90%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
 }
 
 .theme-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 15px rgba(50, 100, 255, 0.25), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  color: rgba(220, 240, 255, 1);
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.theme-button:hover::before {
+  background-position: right;
+  transition-duration: 1s;
 }
 
 .theme-button:active {
-  transform: translateY(1px);
+  transform: scale(0.95);
 }
 
 .theme-dropdown {
@@ -101,7 +100,6 @@
   position: relative;
 }
 
-/* Modified theme option styles for better active state visualization */
 .theme-option::before {
   content: '';
   position: absolute;
@@ -114,7 +112,6 @@
   transition: opacity 0.2s;
 }
 
-/* Checkmark for selected theme */
 .theme-option.selected::after {
   content: '✓';
   position: absolute;
@@ -125,7 +122,6 @@
   opacity: 1;
 }
 
-/* Theme preview circles - base styles */
 .theme-preview {
   display: inline-block;
   width: 16px;
@@ -136,8 +132,6 @@
   transition: all 0.3s ease;
 }
 
-
-/* Selected state - enhanced preview */
 .theme-option.selected .theme-preview {
   width: 18px;
   height: 18px;
@@ -146,7 +140,6 @@
   border-width: 2px;
 }
 
-/* Hover and active states */
 .theme-option:hover {
   background: rgba(70, 90, 150, 0.2);
   color: rgba(220, 240, 255, 1);
@@ -165,7 +158,6 @@
   transform: scale(0.98);
 }
 
-/* Selected state */
 .theme-option.selected {
   background: rgba(70, 100, 180, 0.25);
   color: #ffffff;
@@ -173,7 +165,6 @@
   box-shadow: 0 0 0 1px rgba(100, 160, 255, 0.3);
 }
 
-/* Selected state hover */
 .theme-option.selected:hover {
   background: rgba(70, 100, 180, 0.35);
 }

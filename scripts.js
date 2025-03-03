@@ -4,21 +4,15 @@ const themeDropdown = document.getElementById('theme-dropdown');
 const themeOptions = document.querySelectorAll('.theme-option');
 const styleSheet = document.getElementById('theme-css');
 
+// Performance optimization: Cache current theme
+let currentTheme = styleSheet.getAttribute('href').replace('.css', '');
+
 // Set initial selected state based on current theme
 function updateSelectedState() {
-    const currentTheme = styleSheet.getAttribute('href').replace('.css', '');
-    
     themeOptions.forEach(option => {
         // Check if this option matches current theme
         const isSelected = option.getAttribute('data-theme') === currentTheme;
-        
-        if (isSelected) {
-            option.classList.add('selected');
-            // Update the theme button to show current theme
-            themeToggle.textContent = option.textContent.trim();
-        } else {
-            option.classList.remove('selected');
-        }
+        option.classList.toggle('selected', isSelected);
     });
 }
 
@@ -26,34 +20,57 @@ function updateSelectedState() {
 updateSelectedState();
 
 // Toggle dropdown visibility
-themeToggle.addEventListener('click', function() {
+themeToggle.addEventListener('click', function(e) {
+    e.stopPropagation(); // Prevent event bubbling
     themeDropdown.classList.toggle('show');
-    updateSelectedState(); // Update selection state when opening dropdown
 });
 
-// Handle theme selection
+// Handle theme selection with improved performance
 themeOptions.forEach(option => {
     option.addEventListener('click', function() {
         const selectedTheme = this.getAttribute('data-theme');
-        styleSheet.setAttribute('href', selectedTheme + '.css');
         
-        // Update selection indicators
-        themeOptions.forEach(opt => opt.classList.remove('selected'));
-        this.classList.add('selected');
-        
-        // Update the theme button text to reflect current selection
-        themeToggle.textContent = this.textContent.trim();
+        // Only change if theme is actually different
+        if (selectedTheme !== currentTheme) {
+            // Update stylesheet href
+            styleSheet.setAttribute('href', selectedTheme + '.css');
+            
+            // Update current theme cache
+            currentTheme = selectedTheme;
+            
+            // Update selection indicators efficiently
+            themeOptions.forEach(opt => 
+                opt.classList.toggle('selected', opt === this)
+            );
+            
+            // Update the button data attribute for CSS
+            const themeName = this.textContent.trim();
+            themeToggle.setAttribute('data-current-theme', themeName);
+        }
         
         themeDropdown.classList.remove('show');
-        
-        // Add a subtle visual feedback when theme changes
-        document.body.style.transition = "background-color 0.5s ease";
     });
 });
 
-// Close dropdown when clicking outside
+// Close dropdown when clicking outside - use event delegation
 document.addEventListener('click', function(event) {
-    if (!themeToggle.contains(event.target) && !themeDropdown.contains(event.target)) {
+    if (themeDropdown.classList.contains('show') && 
+        !themeToggle.contains(event.target) && 
+        !themeDropdown.contains(event.target)) {
         themeDropdown.classList.remove('show');
     }
+});
+
+// Optimize CSS transitions by applying them only when needed
+document.addEventListener('DOMContentLoaded', function() {
+    // Preload CSS files to improve switching performance
+    themeOptions.forEach(option => {
+        const theme = option.getAttribute('data-theme');
+        if (theme !== currentTheme) {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = theme + '.css';
+            document.head.appendChild(link);
+        }
+    });
 });
